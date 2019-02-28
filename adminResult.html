@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Admin CIT Sports and Societes</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="adminCSS.css">
+  <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="contact">
+  <button onclick="logout()">Logout</button>
+  <a class="button" href="adminFixture.html">Fixtures</a>
+  <a class="button" href="adminResult.html">Results</a>
+  <a class="button" href="adminEvent.html">Events</a>
+  <br>
+  <br>
+<form id="contactForm">
+  <label>Choose a category...</label>
+            <select id="categories" onchange="selectCategories(this.options[this.selectedIndex].value)" required>
+                <option value="">Category type</option>
+                <option value="1">Sports Clubs</option>
+            </select>
+            <!-- Clubs for categories (empty on default) -->
+            <select id="clubs"></select>
+            <button type="submit">View Results</button>
+   </form>
+   </div>
+
+   <div id="resultAlert" class="alert">No results found</div>
+
+   <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <div class="alert" id="invalidChar">CIT Team, Score, Opposition, Competition Type and Location can't contain <b>.</b>, <b>/</b>, <b>\</b>, <b>#</b>, <b>$</b>, <b>[</b>, or <b>]</b></div>
+        <form id="modalForm">
+          <p>
+            <label><b>CIT Team</b></label>
+            <input type="text" name="team" maxlength="40" id="modalTeam" required placeholder="e.g. CIT 'A'">
+          </p>
+          <p>
+            <label><b>CIT Score</b></label>
+            <input type="text" name="citScore" maxlength="5" id="modalCitScore" required>
+          </p>
+          <p>
+            <label><b>Opposition</b></label>
+            <input name="opposition" maxlength="40" id="modalOpposition" required>
+          </p>
+          <p>
+            <label><b>Opposition Score</b></label>
+            <input type="text" name="oppScore" maxlength="5" id="modalOppScore" required>
+          </p>
+          <p class="full">
+            <label><b>Competition Type <span id="charLength">(Max 50 characters)</span></b></label>
+            <input type="text" maxlength="50" name="type" id="modalType" required placeholder="e.g. League">
+          </p>
+          <p class="full">
+            <label><b>Location <span id="charLength">(Max 50 characters)</span></b></label>
+            <input type="text" maxlength="50" name="location" id="modalLocation" required>
+          </p>
+          <p>
+            <label><b>Date</b></label>
+            <input type="date" name="date" id="modalDate" required>
+          </p>
+          <p>
+            <label><b>Time</b></label>
+            <input name="time" type="time" id="modalTime" required>
+          </p>
+          <p class="full">
+            <button id="submitbtn" type="button">Submit</button>
+          </p>
+        </form>
+  </div>
+
+  </div>
+
+  <br>
+  <h3><u>Result List</u></h3>
+
+  <div id="tableAlert" class="alert">Table must have at least 1 result</div>
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by opposition name..">
+
+  <table id="tbl_result_list" border="1" align="center">
+  	<thead>
+  	  <tr>
+  		<th onClick="sortTable(0)">Date</th>
+      <th onClick="sortTable(1)">CIT Team</th>
+      <th onClick="sortTable(2)">Score</th>
+      <th onClick="sortTable(3)">Opposition</th>
+      <th onClick="sortTable(4)">Location</th>
+      <th onClick="sortTable(5)">Time</th>
+      <th onClick="sortTable(6)">Type</th>
+  	  </tr>
+  	</thead>
+  </table>
+
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script src="adminResult.js"></script>
+
+</body>
+</html>
